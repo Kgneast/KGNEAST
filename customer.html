@@ -4,7 +4,7 @@
 	<title>Contact Us | KGN EAST</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="./assets/css/main.css" />
+	<link rel="stylesheet" href="assets/css/main.css" />
 	<style>
 		/* Clean White Canvas Header Banner Configuration */
 		#banner {
@@ -28,9 +28,45 @@
 		.header-badge { background: #ffffff !important; padding: 6px 16px; border-radius: 4px; display: inline-block; line-height: 1; text-decoration: none !important; border-bottom: none !important; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
 		.header-logo { font-size: 1.1em !important; font-weight: 900 !important; text-transform: uppercase; letter-spacing: 1px; margin: 0; display: inline-block; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 		
-		.wrapper .inner { background: rgba(23, 31, 48, 0.4) !important; backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); border-radius: 8px; padding: 3em !important; border: 1px solid rgba(255,255,255,0.02); }
+		.wrapper .inner { background: rgba(23, 31, 48, 0.4) !important; backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); border-radius: 8px; padding: 3em !important; }
+		
+		/* Executive Highlight Box for Sales Email */
+		.sales-enquiry-box {
+			background: rgba(212, 175, 55, 0.08) !important;
+			border-left: 4px solid #D4AF37 !important;
+			padding: 1.5em !important;
+			margin-bottom: 2.5em !important;
+			border-radius: 0 6px 6px 0;
+		}
+		.sales-enquiry-box h4 {
+			color: #D4AF37 !important;
+			margin: 0 0 0.5em 0 !important;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			font-size: 0.9em;
+		}
+		.sales-email-link {
+			color: #ffffff !important;
+			font-size: 1.4em !important;
+			font-weight: 700 !important;
+			text-decoration: none !important;
+			border-bottom: 1px dashed rgba(255,255,255,0.4) !important;
+			transition: all 0.3s ease;
+		}
+		.sales-email-link:hover {
+			color: #D4AF37 !important;
+			border-bottom-color: #D4AF37 !important;
+		}
+
+		/* Premium Inputs */
+		input[type="text"], input[type="email"], textarea { background: rgba(255,255,255,0.03) !important; border: 1px solid rgba(255,255,255,0.1) !important; border-radius: 4px !important; color: #ffffff !important; }
+		input[type="text"]:focus, input[type="email"]:focus, textarea:focus { border-color: #D4AF37 !important; box-shadow: 0 0 8px rgba(212,175,55,0.2) !important; }
+		
+		/* Premium Gold Button Style */
+		input[type="submit"].primary { background-color: #D4AF37 !important; box-shadow: none !important; color: #051B38 !important; font-weight: 700; transition: all 0.3s ease; cursor: pointer; }
+		input[type="submit"].primary:hover { background-color: #ffffff !important; color: #051B38 !important; transform: translateY(-2px); }
 	</style>
-	<noscript><link rel="stylesheet" href="./assets/css/noscript.css" /></noscript>
+	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
 <body class="is-preload">
 	<div id="page-wrapper">
@@ -52,7 +88,7 @@
 					<li><a href="index.html">Home</a></li>
 					<li><a href="about.html">About Us</a></li>
 					<li><a href="products.html">Products Catalog</a></li>
-					<li><a href="contactus.html">Contact Us</a></li>
+					<li><a href="customer.html">Contact Us</a></li>
 				</ul>
 				<a href="#" class="close">Close</a>
 			</div>
@@ -64,7 +100,7 @@
 					<div class="brand-logo-text"><span class="brand-blue">KGN EAS</span><span class="brand-green">T</span></div>
 					<div class="brand-sub-inside">Marine &amp; Energy Solutions</div>
 				</div>
-				<p class="banner-intro-text">Connect with Our Enterprise Desk</p>
+				<p class="banner-intro-text">Technical Sales Desk &amp; Communications</p>
 			</div>
 		</section>
 
@@ -72,33 +108,90 @@
 			<div class="wrapper">
 				<div class="inner">
 					<section>
-						<h3 class="major" style="color: #D4AF37;">Partner with KGN EAST</h3>
-						<p>Establish direct communication channels with our localized supply desk in Doha. Working side-by-side with global inventory stockists, we facilitate seamless technical alignment, certification cross-checks, and accelerated deployment logistics across regional maritime operations and Qatari energy fields.</p>
-					</section>
-					<section>
-						<h3 class="major" style="color: #D4AF37;">Project &amp; Asset Inquiries</h3>
-						<p>Submit your active technical validation sheets or urgent material requests. Our professional coordination team works straight through factory-direct stock agreements to deliver verified engineering trace lines and high-priority field downtime reduction.</p>
+						<!-- Corporate Highlight Box for Sales Sourcing -->
+						<div class="sales-enquiry-box">
+							<h4>Direct Sales &amp; Sourcing Desk</h4>
+							<a href="mailto:sales@kgneast.com" class="sales-email-link">sales@kgneast.com</a>
+						</div>
+
+						<h3 class="major" style="color: #ffffff; border-bottom-color: rgba(255,255,255,0.1);">Technical RFQ Transmission</h3>
+						
+						<!-- Clean form setup explicitly routing through our local JavaScript function -->
+						<form id="rfqForm" onsubmit="sendMail(event)">
+							<div class="row gtr-uniform">
+								<div class="col-6 col-12-xsmall">
+									<input type="text" id="officerName" placeholder="Inquiry Officer Name" required />
+								</div>
+								<div class="col-6 col-12-xsmall">
+									<input type="email" id="contactEmail" placeholder="Corporate Contact Email" required />
+								</div>
+								<div class="col-12">
+									<input type="text" id="companyName" placeholder="Registered Enterprise Entity Name" required />
+								</div>
+								<div class="col-12">
+									<textarea id="rawMessage" placeholder="Please declare raw part metrics, compressor sizes, JIS valve specs, or emergency breakdown details..." rows="6" required></textarea>
+								</div>
+								<div class="col-12">
+									<ul class="actions">
+										<li><input type="submit" value="Transmit Technical Inquiry" class="primary" /></li>
+									</ul>
+								</div>
+							</div>
+						</form>
 					</section>
 				</div>
 			</div>
 
 			<section id="footer">
 				<div class="inner">
-					<h2 class="major" style="border-bottom-color: #D4AF37;">Global Operations Desk</h2>
+					<h2 class="major" style="border-bottom-color: #D4AF37;">Operations Command Desk</h2>
 					<ul class="contact">
-						<li class="icon solid fa-home">KGN EAST Corporate Head Office<br />Doha, State of Qatar</li>
+						<li class="icon solid fa-home">KGN EAST Head Office<br />Doha, State of Qatar</li>
 						<li class="icon solid fa-phone" style="color: #D4AF37;">+974 66659635</li>
-						<li class="icon solid fa-envelope"><a href="mailto:contact@kgneast.com" style="color: #ffffff; border-bottom-color: rgba(255,255,255,0.3);">contact@kgneast.com</a></li>
+						<li class="icon solid fa-envelope"><a href="mailto:sales@kgneast.com" style="color: #ffffff; border-bottom-color: rgba(255,255,255,0.3);">sales@kgneast.com</a></li>
 					</ul>
 				</div>
 			</section>
 		</section>
 	</div>
-	<script src="./assets/js/jquery.min.js"></script>
-	<script src="./assets/js/jquery.scrollex.min.js"></script>
-	<script src="./assets/js/browser.min.js"></script>
-	<script src="./assets/js/breakpoints.min.js"></script>
-	<script src="./assets/js/util.js"></script>
-	<script src="./assets/js/main.js"></script>
+
+	<!-- Mail Window Script Trigger -->
+	<script>
+		function sendMail(event) {
+			event.preventDefault(); // Safely blocks native webpage reloads
+			
+			// Grab raw user input metrics
+			var name = document.getElementById("officerName").value;
+			var email = document.getElementById("contactEmail").value;
+			var company = document.getElementById("companyName").value;
+			var message = document.getElementById("rawMessage").value;
+			
+			// Email compilation setup
+			var targetEmail = "sales@kgneast.com";
+			var subject = encodeURIComponent("Technical RFQ Sourcing Inquiry - " + company);
+			
+			var body = encodeURIComponent(
+				"Hello KGN EAST Sales Team,\n\n" +
+				"We would like to submit a technical sourcing inquiry.\n\n" +
+				"--- INQUIRY DETAILS ---\n" +
+				"Company Name: " + company + "\n" +
+				"Officer Name: " + name + "\n" +
+				"Reply Email: " + email + "\n\n" +
+				"--- REQUIREMENTS DECLARATION ---\n" +
+				message + "\n\n" +
+				"Regards,\n" + name
+			);
+			
+			// Force native app window assignment execution
+			window.location.href = "mailto:" + targetEmail + "?subject=" + subject + "&body=" + body;
+		}
+	</script>
+
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
 </body>
 </html>
